@@ -1,0 +1,139 @@
+.af-frame-menu {
+    min-height: 420px;
+    display: grid;
+    place-items: center;
+    padding: 48px 20px;
+    box-sizing: border-box;
+}
+
+.af-frame-menu__house {
+    position: relative;
+    width: min(320px, 86vw);
+    height: 330px;
+    perspective: 1000px;
+    outline: none;
+}
+
+.af-frame-menu__roof {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 250px;
+    height: 250px;
+    transform: translateX(-50%) rotate(45deg);
+    border-radius: 20px 8px 18px 8px;
+    background: linear-gradient(135deg, #4b2716 0%, #8d4d2c 52%, #c47a44 100%);
+    box-shadow: 0 22px 45px rgba(55, 31, 18, 0.28);
+}
+
+.af-frame-menu__body {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 250px;
+    height: 220px;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, #f6c986 0%, #b96b38 100%);
+    border: 8px solid #5d3420;
+    border-top: 0;
+    border-radius: 0 0 22px 22px;
+    box-shadow: inset 0 -22px 32px rgba(89, 45, 22, 0.18);
+    overflow: hidden;
+}
+
+.af-frame-menu__front {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    transform-origin: left center;
+    transition: transform 420ms ease, box-shadow 420ms ease;
+    background: linear-gradient(145deg, #d58b4e 0%, #7f4528 100%);
+    border-left: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: inset -24px 0 38px rgba(52, 25, 12, 0.22);
+}
+
+.af-frame-menu__title {
+    color: #fff8e9;
+    font-size: clamp(28px, 8vw, 46px);
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-shadow: 0 4px 12px rgba(47, 24, 12, 0.36);
+}
+
+.af-frame-menu__nav {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    padding: 28px;
+    box-sizing: border-box;
+    background: #fff3d7;
+}
+
+.af-frame-menu__link {
+    opacity: 0;
+    transform: translateY(12px);
+    display: block;
+    padding: 10px 14px;
+    color: #4b2716;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 999px;
+    background: rgba(196, 122, 68, 0.18);
+    transition: opacity 260ms ease, transform 260ms ease, background-color 220ms ease;
+}
+
+.af-frame-menu__link:hover,
+.af-frame-menu__link:focus {
+    color: #2c160c;
+    background: rgba(196, 122, 68, 0.34);
+}
+
+.af-frame-menu__house:hover .af-frame-menu__front,
+.af-frame-menu__house:focus-within .af-frame-menu__front,
+.af-frame-menu__house.is-open .af-frame-menu__front {
+    transform: rotateY(-108deg);
+    box-shadow: 18px 0 34px rgba(52, 25, 12, 0.28);
+}
+
+.af-frame-menu__house:hover .af-frame-menu__link,
+.af-frame-menu__house:focus-within .af-frame-menu__link,
+.af-frame-menu__house.is-open .af-frame-menu__link {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.af-frame-menu__house:hover .af-frame-menu__link:nth-child(2),
+.af-frame-menu__house:focus-within .af-frame-menu__link:nth-child(2),
+.af-frame-menu__house.is-open .af-frame-menu__link:nth-child(2) {
+    transition-delay: 70ms;
+}
+
+.af-frame-menu__house:hover .af-frame-menu__link:nth-child(3),
+.af-frame-menu__house:focus-within .af-frame-menu__link:nth-child(3),
+.af-frame-menu__house.is-open .af-frame-menu__link:nth-child(3) {
+    transition-delay: 140ms;
+}
+
+.af-frame-menu__house:hover .af-frame-menu__link:nth-child(4),
+.af-frame-menu__house:focus-within .af-frame-menu__link:nth-child(4),
+.af-frame-menu__house.is-open .af-frame-menu__link:nth-child(4) {
+    transition-delay: 210ms;
+}
+
+@media (max-width: 480px) {
+    .af-frame-menu {
+        min-height: 360px;
+        padding-inline: 12px;
+    }
+
+    .af-frame-menu__house {
+        height: 300px;
+    }
+}
